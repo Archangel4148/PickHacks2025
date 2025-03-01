@@ -2,7 +2,7 @@ from copy import deepcopy
 import numpy as np
 import pandas as pd
 
-a = pd.read_csv('barber_of_seville_chords.txt', sep='\t', header=None)
+a = pd.read_csv(r'C:\Users\joshu\PycharmProjects\pickhacks2025\PickHacks2025\chords\barber_of_seville_chords.txt', sep='\t', header=None)
 time = a[0]
 chord = a[2]
 print(time)
@@ -62,7 +62,13 @@ chord_mapping = dict(zip(unique_chords, values))
 
 # Map each simplified chord to its corresponding value
 chord_values = simplified_cleaned_chords.map(chord_mapping)
-values = pd.DataFrame({'Time': time, 'Chord': simplified_cleaned_chords, 'Value': chord_values})
-print(values)
 
-values.to_csv('barber_of_seville_chords_with_values.csv', index=False)
+prev_time = 0
+differences = []
+for t in time:
+    differences.append(t-prev_time)
+    prev_time = t
+
+values = pd.DataFrame({'Time': differences, 'Chord': simplified_cleaned_chords, 'Value': chord_values})
+
+values.to_csv(r'C:\Users\joshu\PycharmProjects\pickhacks2025\PickHacks2025\chords\barber_of_seville_chords_with_values.csv', index=False)

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://biv764pmh5omy"
+
+[deps]
+
+files=["res://chords/barber_of_seville_chords_with_values.Chord.translation", "res://chords/barber_of_seville_chords_with_values.Value.translation"]
+
+source_file="res://chords/barber_of_seville_chords_with_values.csv"
+dest_files=["res://chords/barber_of_seville_chords_with_values.Chord.translation", "res://chords/barber_of_seville_chords_with_values.Value.translation"]
+
+[params]
+
+compress=true
+delimiter=0
