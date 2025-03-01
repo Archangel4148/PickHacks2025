@@ -147,6 +147,6 @@ shape = SubResource("CapsuleShape2D_kmh33")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hdbu7")
 animation = &"triceratops"
-frame_progress = 0.717425
+frame_progress = 0.428671
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
