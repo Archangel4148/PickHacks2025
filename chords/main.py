@@ -1,8 +1,10 @@
 from copy import deepcopy
 import numpy as np
 import pandas as pd
+song_file_name = r"\barber_of_seville_chords.txt"
+song_csv_data = r"\barber_of_seville_chords_with_values.csv"
 
-a = pd.read_csv(r'C:\Users\joshu\PycharmProjects\pickhacks2025\PickHacks2025\chords\barber_of_seville_chords.txt', sep='\t', header=None)
+a = pd.read_csv(r'C:\Users\joshu\PycharmProjects\pickhacks2025\PickHacks2025\chords' + song_file_name, sep='\t', header=None)
 time = a[0]
 chord = a[2]
 print(time)
@@ -68,7 +70,11 @@ differences = []
 for t in time:
     differences.append(t-prev_time)
     prev_time = t
-
+# differences = differences[:-1]
+# simplified_cleaned_chords = simplified_cleaned_chords[:-1]
+# chord_values = chord_values[:-1]
 values = pd.DataFrame({'Time': differences, 'Chord': simplified_cleaned_chords, 'Value': chord_values})
-
-values.to_csv(r'C:\Users\joshu\PycharmProjects\pickhacks2025\PickHacks2025\chords\barber_of_seville_chords_with_values.csv', index=False)
+# values = values.dropna() #drop na values
+#if last line is a newline:
+# values = values[:-1]
+values.to_csv(r'C:\Users\joshu\PycharmProjects\pickhacks2025\PickHacks2025\chords' + song_csv_data, index=False)
