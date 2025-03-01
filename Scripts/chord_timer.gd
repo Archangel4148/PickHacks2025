@@ -8,7 +8,7 @@ signal chord_timer_start
 
 func _ready():
 	# Load CSV data
-	load_csv("res://chords/barber_of_seville_chords_with_values.csv")
+	load_csv("res://Pitch/pitch.csv")
 	
 	# Create and setup the timer
 	
@@ -35,9 +35,13 @@ func load_csv(file_path):
 		var data = line.split(",")
 		
 		if data.size() >= 3:  # Ensure there are at least 3 elements in the split
-			var time = float(data[0])
-			var chord = data[1]
-			var value = float(data[2])
+			#Chords:
+			#var time = float(data[0])
+			#var chord = data[1]
+			#var value = float(data[2])
+			#Pitch:
+			var time  = float(data[0])
+			var value = float(data[1])
 		
 			csv_data.append({"time": time, "value": value})
 		else:

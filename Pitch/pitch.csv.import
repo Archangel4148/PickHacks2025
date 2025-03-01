@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://l1mcd7b8ga24"
+
+[deps]
+
+files=["res://Pitch/pitch.Value.translation"]
+
+source_file="res://Pitch/pitch.csv"
+dest_files=["res://Pitch/pitch.Value.translation"]
+
+[params]
+
+compress=true
+delimiter=0

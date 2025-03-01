@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv3bks2i2ax3u"]
+[gd_scene load_steps=2 format=3 uid="uid://b1lalyucqwbmu"]
 
 [ext_resource type="Script" path="res://Scripts/chord_timer.gd" id="1_krg87"]
 
