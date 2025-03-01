@@ -1,5 +1,6 @@
 extends Node2D
 
+
 var csv_data = []
 var current_index = 0  # Track the current index in csv_data
 
@@ -8,7 +9,7 @@ signal chord_timer_start
 
 func _ready():
 	# Load CSV data
-	load_csv("res://Volume/modified_rms_values.csv")
+	load_csv("res://Volume/otherside_volume.csv")
 	
 	# Create and setup the timer
 	
