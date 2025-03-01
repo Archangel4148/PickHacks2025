@@ -6,11 +6,11 @@ extends Path2D
 signal spawn_platform(progress: float)
 
 func _on_platform_timer_timeout() -> void:
-	print("Spawning")
 	var progress = 0.5
-	# Set the path follow to "progress" progress
+	# Select spawn position
 	$PathFollow2D.progress_ratio = randf_range(0,1)
 	# Create a platform instance and add it to the scene.
 	var platform = platform_scene.instantiate()
 	platform.position = $PathFollow2D.position
+	platform.platform_speed = randf_range(200,400)
 	add_child(platform)

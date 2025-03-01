@@ -1,0 +1,152 @@
+[gd_scene load_steps=32 format=3 uid="uid://b6tewl20h013e"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_can3s"]
+[ext_resource type="Texture2D" uid="uid://qelrv2800l64" path="res://Assets/dino_imgs/allo_1.png" id="2_bu1by"]
+[ext_resource type="Texture2D" uid="uid://dr73y5gtvspi8" path="res://Assets/dino_imgs/allo_2.png" id="3_2y21r"]
+[ext_resource type="Texture2D" uid="uid://cekoee47dilth" path="res://Assets/dino_imgs/allo_3.png" id="4_gdltj"]
+[ext_resource type="Texture2D" uid="uid://dth6qtn78wkxp" path="res://Assets/dino_imgs/allo_4.png" id="5_r247h"]
+[ext_resource type="Texture2D" uid="uid://csolg6sif7tp2" path="res://Assets/dino_imgs/allo_5.png" id="6_xx13s"]
+[ext_resource type="Texture2D" uid="uid://cwjfoxbty0xca" path="res://Assets/dino_imgs/allo_6.png" id="7_575k8"]
+[ext_resource type="Texture2D" uid="uid://f6enf3xab0g5" path="res://Assets/dino_imgs/allo_7.png" id="8_jawgm"]
+[ext_resource type="Texture2D" uid="uid://dje4qcrlqt26x" path="res://Assets/dino_imgs/allo_8.png" id="9_rwsf8"]
+[ext_resource type="Texture2D" uid="uid://cime02endldt3" path="res://Assets/dino_imgs/allo_9.png" id="10_bbpnh"]
+[ext_resource type="Texture2D" uid="uid://cns1sqwiypjks" path="res://Assets/dino_imgs/allo_10.png" id="11_2y5gt"]
+[ext_resource type="Texture2D" uid="uid://do0sq0tm7jq1c" path="res://Assets/dino_imgs/green_bird_1.png" id="12_jqndy"]
+[ext_resource type="Texture2D" uid="uid://k5a2dy34geum" path="res://Assets/dino_imgs/green_bird_2.png" id="13_myd7g"]
+[ext_resource type="Texture2D" uid="uid://xtbqau58mg2k" path="res://Assets/dino_imgs/green_bird_3.png" id="14_wpaoj"]
+[ext_resource type="Texture2D" uid="uid://dq310ym0t3msk" path="res://Assets/dino_imgs/green_bird_4.png" id="15_2k1bj"]
+[ext_resource type="Texture2D" uid="uid://dx7iuxtdhcy8o" path="res://Assets/dino_imgs/green_bird_5.png" id="16_ir4if"]
+[ext_resource type="Texture2D" uid="uid://sr6d1usb328n" path="res://Assets/dino_imgs/green_bird_6.png" id="17_o5rap"]
+[ext_resource type="Texture2D" uid="uid://dqqomj317kfxh" path="res://Assets/dino_imgs/tricer_1.png" id="18_y2ofd"]
+[ext_resource type="Texture2D" uid="uid://b21m0brkjq1aq" path="res://Assets/dino_imgs/tricer_2.png" id="19_nqtwn"]
+[ext_resource type="Texture2D" uid="uid://dhjvygp7f28bw" path="res://Assets/dino_imgs/tricer_3.png" id="20_syqq7"]
+[ext_resource type="Texture2D" uid="uid://cbfjauinkbgok" path="res://Assets/dino_imgs/tricer_4.png" id="21_vmwcr"]
+[ext_resource type="Texture2D" uid="uid://chu31030sjx8e" path="res://Assets/dino_imgs/tricer_5.png" id="22_7m5po"]
+[ext_resource type="Texture2D" uid="uid://d12at2r7t755t" path="res://Assets/dino_imgs/tricer_6.png" id="23_tsb1v"]
+[ext_resource type="Texture2D" uid="uid://deoymgvxp1k6w" path="res://Assets/dino_imgs/tricer_7.png" id="24_rbb3i"]
+[ext_resource type="Texture2D" uid="uid://bqypy42rtcrf6" path="res://Assets/dino_imgs/tricer_8.png" id="25_1bnsu"]
+[ext_resource type="Texture2D" uid="uid://bklr88hx6qasj" path="res://Assets/dino_imgs/tricer_9.png" id="26_ltd78"]
+[ext_resource type="Texture2D" uid="uid://lbgq6hfh8j36" path="res://Assets/dino_imgs/tricer_10.png" id="27_mls8b"]
+[ext_resource type="Texture2D" uid="uid://b08oh6nundkep" path="res://Assets/dino_imgs/tricer_11.png" id="28_ofocm"]
+[ext_resource type="Texture2D" uid="uid://b0yeev08627pa" path="res://Assets/dino_imgs/tricer_12.png" id="29_fb50b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kmh33"]
+radius = 67.0
+height = 272.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdbu7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bu1by")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2y21r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gdltj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r247h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xx13s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_575k8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jawgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rwsf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bbpnh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2y5gt")
+}],
+"loop": true,
+"name": &"allosaurus",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_jqndy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_myd7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wpaoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2k1bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ir4if")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_o5rap")
+}],
+"loop": true,
+"name": &"green_bird",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_y2ofd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_nqtwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_syqq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_vmwcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_7m5po")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_tsb1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_rbb3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_1bnsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ltd78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_mls8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ofocm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_fb50b")
+}],
+"loop": true,
+"name": &"triceratops",
+"speed": 13.0
+}]
+
+[node name="Enemy" type="RigidBody2D"]
+script = ExtResource("1_can3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(17, 11)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kmh33")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hdbu7")
+animation = &"triceratops"
+frame_progress = 0.717425
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgynl46gj8bqx"]
 
-[ext_resource type="Script" path="res://infinite_moving_platform.gd" id="1_fcc5w"]
+[ext_resource type="Script" path="res://Scripts/infinite_moving_platform.gd" id="1_fcc5w"]
 [ext_resource type="Texture2D" uid="uid://iwiliy0lco8t" path="res://Assets/world_tileset.png" id="1_ljobw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibgmo"]

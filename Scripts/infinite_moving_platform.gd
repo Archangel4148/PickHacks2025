@@ -4,10 +4,6 @@ extends AnimatableBody2D
 @export var direction: Vector2 = Vector2(-1, 0)  # Export direction as a Vector2
 @onready var sprite = $Sprite2D  # Assuming you have a Sprite node as a child
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	print("I exist!")
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Calculate the velocity based on direction and speed

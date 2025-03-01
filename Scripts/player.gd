@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 var jump_count = 0  # Number of jumps that have been made
 
+signal player_jumped
+
 func _ready():
 	pass
 	
@@ -39,6 +41,7 @@ func _input(event: InputEvent) -> void:
 	if jump_count < max_jumps and event.is_action_pressed("jump"):
 		velocity.y = -jump_force
 		jump_count += 1
+		player_jumped.emit()
 		
 	# Handle crouching (dropping through platforms)
 	if event.is_action_pressed("crouch"):
