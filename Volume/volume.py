@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 # Load the audio file (replace with your file path)
-y, sr = librosa.load(r'C:\Users\joshu\PycharmProjects\pickhacks2025\PickHacks2025\Assets\Music\Gioachino_Rossini_-_The_Barber_Of_Seville_-_Overture.ogg')
+y, sr = librosa.load(r'C:\Users\joshu\PycharmProjects\pickhacks2025\PickHacks2025\Assets\Music\otherside.ogg')
 
 # Set analysis parameters
 frame_length = 2048
@@ -22,4 +22,4 @@ times = librosa.frames_to_time(np.arange(len(rms)), sr=sr, hop_length=hop_length
 df = pd.DataFrame({'time': times, 'rms_normalized': rms_normalized})
 
 # Export the DataFrame to a CSV file
-df.to_csv(r'C:\Users\joshu\PycharmProjects\pickhacks2025\PickHacks2025\Volume\rms_values_normalized.csv', index=False)
+df.to_csv(r'C:\Users\joshu\PycharmProjects\pickhacks2025\PickHacks2025\Volume\otherside_volume.csv', index=False)
