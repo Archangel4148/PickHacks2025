@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmtvqasa0b777"]
+
+[ext_resource type="Script" path="res://Scripts/moving_platform.gd" id="1_1v5f6"]
+[ext_resource type="Texture2D" uid="uid://iwiliy0lco8t" path="res://Assets/world_tileset.png" id="1_363fl"]
+
+[sub_resource type="Curve2D" id="Curve2D_a10s7"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -148)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dueor"]
+size = Vector2(48, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xnuw"]
+atlas = ExtResource("1_363fl")
+region = Rect2(144, 32, 48, 9)
+
+[node name="Moving Platform" type="Path2D"]
+curve = SubResource("Curve2D_a10s7")
+script = ExtResource("1_1v5f6")
+ease = 2
+transition = 4
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+scale = Vector2(2.635, 2.635)
+shape = SubResource("RectangleShape2D_dueor")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture_filter = 1
+scale = Vector2(2.635, 2.635)
+texture = SubResource("AtlasTexture_8xnuw")
