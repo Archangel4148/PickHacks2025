@@ -20,8 +20,6 @@ region = Rect2(144, 32, 48, 9)
 [node name="Moving Platform" type="Path2D"]
 curve = SubResource("Curve2D_a10s7")
 script = ExtResource("1_1v5f6")
-ease = 2
-transition = 4
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotates = false
