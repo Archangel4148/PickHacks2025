@@ -8,7 +8,7 @@ signal chord_timer_start
 
 func _ready():
 	# Load CSV data
-	load_csv("res://Pitch/pitch.csv")
+	load_csv("res://Volume/modified_rms_values.csv")
 	
 	# Create and setup the timer
 	
