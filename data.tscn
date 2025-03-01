@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1lalyucqwbmu"]
-
-[ext_resource type="Script" path="res://Scripts/chord_timer.gd" id="1_krg87"]
-
-[node name="Timer" type="Timer"]
-script = ExtResource("1_krg87")
