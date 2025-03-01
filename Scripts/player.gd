@@ -34,6 +34,8 @@ func _physics_process(delta: float) -> void:
 	# Handle directional movement
 	var horiz_direction = Input.get_axis("move_left", "move_right")
 	velocity.x = move_speed * horiz_direction
+
+
 	move_and_slide()
 	
 func _input(event: InputEvent) -> void:
