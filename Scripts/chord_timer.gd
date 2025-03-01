@@ -35,7 +35,7 @@ func load_csv(file_path):
 			continue
 		var data = line.split(",")
 		
-		if data.size() >= 3:  # Ensure there are at least 3 elements in the split
+		if data.size() >= 2:  # Ensure there are at least 3 elements in the split
 			#Chords:
 			#var time = float(data[0])
 			#var chord = data[1]
@@ -48,6 +48,7 @@ func load_csv(file_path):
 		else:
 			# Skipping invalid line
 			pass
+	print(csv_data)
 	file.close()
 
 # Function to start the next timer based on the next "time" in csv_data

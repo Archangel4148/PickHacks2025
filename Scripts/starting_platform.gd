@@ -12,4 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_player_player_jumped() -> void:
-	queue_free()
+	hide()
+	collision_layer

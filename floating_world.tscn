@@ -1,26 +1,30 @@
-[gd_scene load_steps=12 format=3 uid="uid://7le66cg706ka"]
+[gd_scene load_steps=11 format=3 uid="uid://7le66cg706ka"]
 
 [ext_resource type="Script" path="res://Scripts/floating_world.gd" id="1_dyskc"]
 [ext_resource type="Script" path="res://Scripts/spawn_path.gd" id="1_rdw0o"]
 [ext_resource type="PackedScene" uid="uid://dgynl46gj8bqx" path="res://infinite_moving_platform.tscn" id="2_vbpbl"]
-[ext_resource type="Texture2D" uid="uid://iwiliy0lco8t" path="res://Assets/world_tileset.png" id="3_dgmpr"]
 [ext_resource type="Script" path="res://Scripts/starting_platform.gd" id="3_orjft"]
 [ext_resource type="PackedScene" uid="uid://c017ws7pisoip" path="res://player.tscn" id="4_vmq7h"]
+<<<<<<< HEAD
+[ext_resource type="Texture2D" uid="uid://cdes2xtbjx4jp" path="res://Assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="5_a8wwt"]
+[ext_resource type="AudioStream" uid="uid://ccwckq4li6ilu" path="res://Assets/Music/Gioachino_Rossini_-_The_Barber_Of_Seville_-_Overture.ogg" id="8_b3j57"]
+=======
 [ext_resource type="PackedScene" uid="uid://b1lalyucqwbmu" path="res://data.tscn" id="6_u6680"]
 [ext_resource type="AudioStream" uid="uid://b2bh0im68efm1" path="res://Assets/Music/Gioachino_Rossini_-_The_Barber_Of_Seville_-_Overture.ogg" id="8_b3j57"]
+>>>>>>> fa237e005805b04bca1888a9b95ce1f9f02fdfcd
 
 [sub_resource type="Curve2D" id="Curve2D_kxlxg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 1088, 0)
 }
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5yche"]
-size = Vector2(128, 18)
+size = Vector2(304, 26)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_keaei"]
-atlas = ExtResource("3_dgmpr")
-region = Rect2(144, 32, 48, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ao08"]
+atlas = ExtResource("5_a8wwt")
+region = Rect2(755, 48, 170, 16)
 
 [node name="Floating World" type="Node2D"]
 script = ExtResource("1_dyskc")
@@ -31,31 +35,33 @@ script = ExtResource("1_rdw0o")
 platform_scene = ExtResource("2_vbpbl")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2(64, 0)
 
 [node name="Starting Platform" type="StaticBody2D" parent="."]
 collision_layer = 257
 script = ExtResource("3_orjft")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Starting Platform"]
-position = Vector2(576, 607)
+position = Vector2(576, 611)
 shape = SubResource("RectangleShape2D_5yche")
 
 [node name="Sprite2D" type="Sprite2D" parent="Starting Platform"]
 texture_filter = 1
 position = Vector2(576, 608)
-scale = Vector2(2.645, 2.645)
-texture = SubResource("AtlasTexture_keaei")
+scale = Vector2(1.865, 1.865)
+texture = SubResource("AtlasTexture_2ao08")
 
 [node name="Player" parent="." instance=ExtResource("4_vmq7h")]
 position = Vector2(576, 576)
-scale = Vector2(0.515, 0.515)
+scale = Vector2(0.525, 0.525)
 platform_on_leave = 2
-
-[node name="ChordTimer" parent="." instance=ExtResource("6_u6680")]
 
 [node name="Music Player" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_b3j57")
 
+[node name="Platform Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
 [connection signal="player_jumped" from="Player" to="Starting Platform" method="_on_player_player_jumped"]
-[connection signal="chord_timer_start" from="ChordTimer" to="." method="_on_chord_timer_chord_timer_start"]
-[connection signal="send_chord_data" from="ChordTimer" to="SpawnPath" method="_on_chord_timer_send_chord_data"]
+[connection signal="timeout" from="Platform Timer" to="SpawnPath" method="_on_platform_timer_timeout"]
