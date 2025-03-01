@@ -4,6 +4,7 @@ var csv_data = []
 var current_index = 0  # Track the current index in csv_data
 
 signal send_chord_data(progress: float)
+signal chord_timer_start
 
 func _ready():
 	# Load CSV data
@@ -16,6 +17,7 @@ func _ready():
 	
 	# Start the first timer based on the first entry in the CSV
 	start_next_timer()
+	chord_timer_start.emit()
 
 # Function to load and parse CSV data
 func load_csv(file_path):

@@ -1,15 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://7le66cg706ka"]
+[gd_scene load_steps=12 format=3 uid="uid://7le66cg706ka"]
 
+[ext_resource type="Script" path="res://floating_world.gd" id="1_dyskc"]
 [ext_resource type="Script" path="res://Scripts/spawn_path.gd" id="1_rdw0o"]
 [ext_resource type="PackedScene" uid="uid://dgynl46gj8bqx" path="res://infinite_moving_platform.tscn" id="2_vbpbl"]
 [ext_resource type="Texture2D" uid="uid://iwiliy0lco8t" path="res://Assets/world_tileset.png" id="3_dgmpr"]
 [ext_resource type="Script" path="res://Scripts/starting_platform.gd" id="3_orjft"]
 [ext_resource type="PackedScene" uid="uid://c017ws7pisoip" path="res://player.tscn" id="4_vmq7h"]
 [ext_resource type="PackedScene" uid="uid://b1lalyucqwbmu" path="res://chord_timer.tscn" id="6_u6680"]
+[ext_resource type="AudioStream" uid="uid://ccwckq4li6ilu" path="res://Assets/Music/Gioachino_Rossini_-_The_Barber_Of_Seville_-_Overture.ogg" id="8_b3j57"]
 
 [sub_resource type="Curve2D" id="Curve2D_kxlxg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -64, 0, 0, 0, 0, 1152, -64)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0)
 }
 point_count = 2
 
@@ -21,6 +23,7 @@ atlas = ExtResource("3_dgmpr")
 region = Rect2(144, 32, 48, 10)
 
 [node name="Floating World" type="Node2D"]
+script = ExtResource("1_dyskc")
 
 [node name="SpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_kxlxg")
@@ -28,7 +31,6 @@ script = ExtResource("1_rdw0o")
 platform_scene = ExtResource("2_vbpbl")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPath"]
-position = Vector2(0, -64)
 
 [node name="Starting Platform" type="StaticBody2D" parent="."]
 collision_layer = 257
@@ -51,5 +53,9 @@ platform_on_leave = 2
 
 [node name="ChordTimer" parent="." instance=ExtResource("6_u6680")]
 
+[node name="Music Player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_b3j57")
+
 [connection signal="player_jumped" from="Player" to="Starting Platform" method="_on_player_player_jumped"]
+[connection signal="chord_timer_start" from="ChordTimer" to="." method="_on_chord_timer_chord_timer_start"]
 [connection signal="send_chord_data" from="ChordTimer" to="SpawnPath" method="_on_chord_timer_send_chord_data"]

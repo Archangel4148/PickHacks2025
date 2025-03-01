@@ -13,5 +13,4 @@ func _on_chord_timer_send_chord_data(progress: float) -> void:
 	# Create a platform instance and add it to the scene.
 	var platform = platform_scene.instantiate()
 	platform.position = $PathFollow2D.position
-	platform.platform_speed = randf_range(200,400)
 	add_child(platform)
