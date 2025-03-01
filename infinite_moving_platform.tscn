@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgynl46gj8bqx"]
 
 [ext_resource type="Script" path="res://Scripts/infinite_moving_platform.gd" id="1_fcc5w"]
-[ext_resource type="Texture2D" uid="uid://cdes2xtbjx4jp" path="res://Assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="2_bx5te"]
+[ext_resource type="Texture2D" uid="uid://dmj02wbepolnu" path="res://Assets/Cave Assets/mainlev_build.png" id="2_bx5te"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibgmo"]
 size = Vector2(61.4801, 10.2467)
