@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://7le66cg706ka"]
+[gd_scene load_steps=10 format=3 uid="uid://7le66cg706ka"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_path.gd" id="1_rdw0o"]
 [ext_resource type="PackedScene" uid="uid://dgynl46gj8bqx" path="res://infinite_moving_platform.tscn" id="2_vbpbl"]
 [ext_resource type="Texture2D" uid="uid://iwiliy0lco8t" path="res://Assets/world_tileset.png" id="3_dgmpr"]
 [ext_resource type="Script" path="res://Scripts/starting_platform.gd" id="3_orjft"]
 [ext_resource type="PackedScene" uid="uid://c017ws7pisoip" path="res://player.tscn" id="4_vmq7h"]
+[ext_resource type="PackedScene" uid="uid://b1lalyucqwbmu" path="res://chord_timer.tscn" id="6_u6680"]
 
 [sub_resource type="Curve2D" id="Curve2D_kxlxg"]
 _data = {
@@ -29,9 +30,6 @@ platform_scene = ExtResource("2_vbpbl")
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPath"]
 position = Vector2(0, -64)
 
-[node name="PlatformTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="Starting Platform" type="StaticBody2D" parent="."]
 collision_layer = 257
 script = ExtResource("3_orjft")
@@ -51,5 +49,7 @@ position = Vector2(576, 576)
 scale = Vector2(0.515, 0.515)
 platform_on_leave = 2
 
-[connection signal="timeout" from="PlatformTimer" to="SpawnPath" method="_on_platform_timer_timeout"]
+[node name="ChordTimer" parent="." instance=ExtResource("6_u6680")]
+
 [connection signal="player_jumped" from="Player" to="Starting Platform" method="_on_player_player_jumped"]
+[connection signal="send_chord_data" from="ChordTimer" to="SpawnPath" method="_on_chord_timer_send_chord_data"]
