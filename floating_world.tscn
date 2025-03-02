@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://c017ws7pisoip" path="res://player.tscn" id="4_vmq7h"]
 [ext_resource type="Texture2D" uid="uid://dmj02wbepolnu" path="res://Assets/Cave Assets/mainlev_build.png" id="5_a8wwt"]
 [ext_resource type="FontFile" uid="uid://cqs2hj0i8jw7b" path="res://Assets/Fonts/Mondobeyondobb-dn3E.otf" id="8_m5rvj"]
-[ext_resource type="AudioStream" uid="uid://jt2guxdqacfv" path="res://Assets/Music/carmina.wav" id="8_xiec0"]
+[ext_resource type="AudioStream" uid="uid://cp2ggbjbgkwd2" path="res://Assets/Music/carmina.wav" id="8_xiec0"]
 [ext_resource type="PackedScene" uid="uid://chsdp8s66n5s" path="res://scrolling_background.tscn" id="9_vtige"]
-[ext_resource type="AudioStream" uid="uid://cwgkdqp5rmfwd" path="res://sound effects/movement/slime_jump.wav" id="10_spx0k"]
+[ext_resource type="AudioStream" uid="uid://86d1v7eiy7c0" path="res://sound effects/movement/slime_jump.wav" id="10_spx0k"]
 [ext_resource type="Script" path="res://Scripts/jump_sound.gd" id="11_060ly"]
 [ext_resource type="AudioStream" uid="uid://cj381jttila37" path="res://sound effects/movement/double jump.wav" id="12_dq62o"]
 [ext_resource type="Script" path="res://Scripts/double_jump_sound.gd" id="12_xqkhc"]
@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://dliqlaigefatv" path="res://sound effects/movement/offical land.wav" id="20_v71cv"]
 [ext_resource type="AudioStream" uid="uid://svq6iw6ygcwn" path="res://sound effects/begin_end/official scream to boom.wav" id="22_uqhb5"]
 [ext_resource type="Script" path="res://Scripts/falling_sound.gd" id="23_7c8vw"]
-[ext_resource type="Texture2D" uid="uid://b2l8g2oxpxg4v" path="res://Assets/win_screen.png" id="24_htb5j"]
+[ext_resource type="Texture2D" uid="uid://bxy7nyr72vbhk" path="res://Assets/win_screen.png" id="24_htb5j"]
 
 [sub_resource type="Curve2D" id="Curve2D_kxlxg"]
 _data = {
@@ -202,6 +202,7 @@ text = "play again?"
 
 [connection signal="game_end" from="." to="Scrolling Background" method="_on_floating_world_game_end"]
 [connection signal="game_end" from="." to="SpawnPath" method="_on_floating_world_game_end"]
+[connection signal="game_end" from="." to="Starting Platform" method="_on_floating_world_game_end"]
 [connection signal="game_end" from="." to="Player" method="_on_floating_world_game_end"]
 [connection signal="game_started" from="." to="Scrolling Background" method="_on_floating_world_game_started"]
 [connection signal="game_started" from="." to="Starting Platform" method="_on_floating_world_game_started"]

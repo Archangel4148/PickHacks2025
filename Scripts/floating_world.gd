@@ -11,7 +11,8 @@ func _ready() -> void:
 	$"Win HUD".hide()
 	game_started.emit(true)
 	$HUD.show()
-	game_length = $"Music Player".stream.get_length()
+	#game_length = $"Music Player".stream.get_length()
+	game_length = 3
 	
 	# Initialize the ColorRect for the fade effect
 	$"Fade Screen".color = Color(1, 1, 1, 0)
@@ -72,7 +73,7 @@ func fade_to_white():
 	await get_tree().create_timer(1.0).timeout
 	# Set up and display the win screen (with the player)
 	$"Win Screen".show()
-	$"Starting Platform/CollisionShape2D".scale = Vector2($"Starting Platform/CollisionShape2D".scale.x * 3, $"Starting Platform/CollisionShape2D".scale.y)
+	$"Starting Platform/CollisionShape2D".scale = Vector2($"Starting Platform/CollisionShape2D".scale.x * 5, $"Starting Platform/CollisionShape2D".scale.y)
 	$Player.z_index = 10
 	$Player.position = Vector2(200, 128)
 	$Player.scale = Vector2(3,3)

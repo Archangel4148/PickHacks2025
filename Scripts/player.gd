@@ -52,6 +52,7 @@ func _physics_process(delta: float) -> void:
 	was_in_air = !on_floor  # Update air state
 	
 	if game_is_over:
+		move_and_slide()
 		return
 
 	# Handle falling out of bounds
