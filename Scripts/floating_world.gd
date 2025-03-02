@@ -5,6 +5,7 @@ signal game_started(disable_inputs: bool)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	game_started.emit(true)
+	$HUD.show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,4 +23,5 @@ func _on_start_button_pressed() -> void:
 func start_game():
 	$HUD.hide()
 	$"Platform Timer".start()
+	$"Scrolling Background".scroll_time = 180
 	game_started.emit(false)

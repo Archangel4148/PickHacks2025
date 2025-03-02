@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://chsdp8s66n5s"]
+
+[ext_resource type="Script" path="res://Scripts/scrolling_background.gd" id="1_mqbwh"]
+[ext_resource type="Texture2D" uid="uid://elbwu7ee608a" path="res://Assets/background.png" id="1_ssg8p"]
+
+[node name="Scrolling Background" type="Node2D"]
+script = ExtResource("1_mqbwh")
+scroll_time = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(499, -4420)
+scale = Vector2(1.34179, 1.34179)
+texture = ExtResource("1_ssg8p")
