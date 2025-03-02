@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://7le66cg706ka"]
+[gd_scene load_steps=23 format=3 uid="uid://7le66cg706ka"]
 
 [ext_resource type="Script" path="res://Scripts/floating_world.gd" id="1_dyskc"]
 [ext_resource type="Script" path="res://Scripts/spawn_path.gd" id="1_rdw0o"]
@@ -11,8 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://chsdp8s66n5s" path="res://scrolling_background.tscn" id="9_vtige"]
 [ext_resource type="AudioStream" uid="uid://bxefo0ow1sp0s" path="res://sound effects/grunts/grunt1.wav" id="10_5mfag"]
 [ext_resource type="Script" path="res://Scripts/jump_sound.gd" id="11_060ly"]
+[ext_resource type="AudioStream" uid="uid://dm5vooajrv7xo" path="res://sound effects/grunts/grunt2.wav" id="12_7vjfv"]
 [ext_resource type="AudioStream" uid="uid://cj381jttila37" path="res://sound effects/movement/double jump.wav" id="12_dq62o"]
 [ext_resource type="Script" path="res://Scripts/double_jump_sound.gd" id="12_xqkhc"]
+[ext_resource type="AudioStream" uid="uid://bxsimdxx6nsw" path="res://sound effects/grunts/grunt3.wav" id="13_llmc6"]
+[ext_resource type="AudioStream" uid="uid://c24qpxqrd6qbp" path="res://sound effects/grunts/grunt4.wav" id="14_ta70n"]
+[ext_resource type="AudioStream" uid="uid://dnydbjnudb0ha" path="res://sound effects/grunts/grunt5.wav" id="15_1klfp"]
+[ext_resource type="AudioStream" uid="uid://blwg5w72w7io0" path="res://sound effects/grunts/grunt6.wav" id="16_whcen"]
+[ext_resource type="AudioStream" uid="uid://v8ysl5y1gnmc" path="res://sound effects/grunts/grunt7.wav" id="17_46ota"]
 
 [sub_resource type="Curve2D" id="Curve2D_kxlxg"]
 _data = {
@@ -57,7 +63,7 @@ texture = SubResource("AtlasTexture_2ao08")
 
 [node name="Player" parent="." instance=ExtResource("4_vmq7h")]
 position = Vector2(496, 483)
-scale = Vector2(0.525, 0.525)
+scale = Vector2(1.365, 1.365)
 platform_on_leave = 2
 
 [node name="Music Player" type="AudioStreamPlayer2D" parent="."]
@@ -107,11 +113,11 @@ text = "START"
 
 [node name="Sound Effects" type="Node" parent="."]
 
-[node name="Jump Sound" type="AudioStreamPlayer2D" parent="Sound Effects"]
-stream = ExtResource("10_5mfag")
+[node name="Jump Sound" type="AudioStreamPlayer" parent="Sound Effects"]
 script = ExtResource("11_060ly")
+jump_sounds = Array[AudioStream]([ExtResource("10_5mfag"), ExtResource("12_7vjfv"), ExtResource("13_llmc6"), ExtResource("14_ta70n"), ExtResource("15_1klfp"), ExtResource("16_whcen"), ExtResource("17_46ota")])
 
-[node name="Double Jump Sound" type="AudioStreamPlayer2D" parent="Sound Effects"]
+[node name="Double Jump Sound" type="AudioStreamPlayer" parent="Sound Effects"]
 stream = ExtResource("12_dq62o")
 script = ExtResource("12_xqkhc")
 
