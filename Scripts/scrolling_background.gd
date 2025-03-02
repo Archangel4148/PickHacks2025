@@ -14,7 +14,7 @@ func _ready():
 func start_scroll():
 	# If there is an existing tween, stop it
 	if current_tween:
-		current_tween.stop_all()
+		current_tween.kill()
 
 	# Create a new tween
 	current_tween = get_tree().create_tween()

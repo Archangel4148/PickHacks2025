@@ -40,6 +40,10 @@ func game_over():
 		$"Music Player".seek(0)  # Reset music to the start
 	
 	game_end.emit(false)
+	await get_tree().create_timer(3.5).timeout
+	$HUD.show()
+	game_started.emit(true)
+	
 
 func _on_player_player_fell_out_of_bounds() -> void:
 	game_over()

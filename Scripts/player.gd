@@ -16,6 +16,14 @@ signal player_fell_out_of_bounds  # New signal for falling below the screen
 
 @export var fall_threshold: float = 50  # How far below the screen before triggering the signal
 
+# Store the spawn position
+var spawn_position: Vector2
+
+func _ready():
+	# Save the player's initial position as the spawn position when the game starts
+	spawn_position = position
+	reset_player()  # Ensure the player starts in the initial position
+
 func _physics_process(delta: float) -> void:
 	var on_floor = is_on_floor()
 
@@ -85,3 +93,19 @@ func _input(event: InputEvent) -> void:
 
 func _on_floating_world_game_started(disable_inputs: bool) -> void:
 	disable_input = disable_inputs
+	if disable_inputs:
+		reset_player()
+
+# Reset the player's state, position, and jump count
+func reset_player():
+	# Reset position to spawn position
+	position = spawn_position
+	
+	# Reset other state variables
+	jump_count = 0
+	velocity = Vector2.ZERO  # Reset velocity
+	has_fallen = false
+	was_in_air = false
+
+	# Optionally reset animations
+	$AnimatedSprite2D.play("Idle")  # Play idle animation when reset
