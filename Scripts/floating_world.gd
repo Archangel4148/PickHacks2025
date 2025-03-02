@@ -24,4 +24,5 @@ func start_game():
 	$HUD.hide()
 	$"Platform Timer".start()
 	$"Scrolling Background".scroll_time = 180
+	$"Music Player".play()
 	game_started.emit(false)
