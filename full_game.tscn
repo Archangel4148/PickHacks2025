@@ -1,23 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://7le66cg706ka"]
+[gd_scene load_steps=23 format=3 uid="uid://7le66cg706ka"]
 
-[ext_resource type="Script" path="res://Scripts/floating_world.gd" id="1_dyskc"]
-[ext_resource type="Script" path="res://Scripts/spawn_path.gd" id="1_rdw0o"]
-[ext_resource type="PackedScene" uid="uid://dgynl46gj8bqx" path="res://infinite_moving_platform.tscn" id="2_vbpbl"]
-[ext_resource type="Script" path="res://Scripts/starting_platform.gd" id="3_orjft"]
-[ext_resource type="PackedScene" uid="uid://c017ws7pisoip" path="res://player.tscn" id="4_vmq7h"]
-[ext_resource type="Texture2D" uid="uid://dmj02wbepolnu" path="res://Assets/Cave Assets/mainlev_build.png" id="5_a8wwt"]
-[ext_resource type="FontFile" uid="uid://cqs2hj0i8jw7b" path="res://Assets/Fonts/Mondobeyondobb-dn3E.otf" id="8_m5rvj"]
-[ext_resource type="AudioStream" uid="uid://cp2ggbjbgkwd2" path="res://Assets/Music/carmina.wav" id="8_xiec0"]
-[ext_resource type="PackedScene" uid="uid://chsdp8s66n5s" path="res://scrolling_background.tscn" id="9_vtige"]
-[ext_resource type="AudioStream" uid="uid://86d1v7eiy7c0" path="res://sound effects/movement/slime_jump.wav" id="10_spx0k"]
-[ext_resource type="Script" path="res://Scripts/jump_sound.gd" id="11_060ly"]
-[ext_resource type="AudioStream" uid="uid://cj381jttila37" path="res://sound effects/movement/double jump.wav" id="12_dq62o"]
-[ext_resource type="Script" path="res://Scripts/double_jump_sound.gd" id="12_xqkhc"]
-[ext_resource type="Script" path="res://Scripts/landing_sound.gd" id="20_q150l"]
-[ext_resource type="AudioStream" uid="uid://dliqlaigefatv" path="res://sound effects/movement/offical land.wav" id="20_v71cv"]
-[ext_resource type="AudioStream" uid="uid://svq6iw6ygcwn" path="res://sound effects/begin_end/official scream to boom.wav" id="22_uqhb5"]
-[ext_resource type="Script" path="res://Scripts/falling_sound.gd" id="23_7c8vw"]
-[ext_resource type="Texture2D" uid="uid://bxy7nyr72vbhk" path="res://Assets/win_screen.png" id="24_htb5j"]
+[ext_resource type="Script" path="res://Scripts/floating_world.gd" id="1_sl0r7"]
+[ext_resource type="PackedScene" uid="uid://chsdp8s66n5s" path="res://scrolling_background.tscn" id="2_uccer"]
+[ext_resource type="Script" path="res://Scripts/spawn_path.gd" id="3_pd25u"]
+[ext_resource type="PackedScene" uid="uid://dgynl46gj8bqx" path="res://infinite_moving_platform.tscn" id="4_p2185"]
+[ext_resource type="Script" path="res://Scripts/starting_platform.gd" id="5_5q5hx"]
+[ext_resource type="Texture2D" uid="uid://dmj02wbepolnu" path="res://Assets/Cave Assets/mainlev_build.png" id="6_dehnf"]
+[ext_resource type="PackedScene" uid="uid://c017ws7pisoip" path="res://player.tscn" id="7_cdhof"]
+[ext_resource type="AudioStream" uid="uid://cp2ggbjbgkwd2" path="res://Assets/Music/carmina.wav" id="8_ukfjt"]
+[ext_resource type="FontFile" uid="uid://cqs2hj0i8jw7b" path="res://Assets/Fonts/Mondobeyondobb-dn3E.otf" id="9_g0ix6"]
+[ext_resource type="AudioStream" uid="uid://86d1v7eiy7c0" path="res://sound effects/movement/slime_jump.wav" id="10_u6u63"]
+[ext_resource type="Script" path="res://Scripts/jump_sound.gd" id="11_577a3"]
+[ext_resource type="AudioStream" uid="uid://cj381jttila37" path="res://sound effects/movement/double jump.wav" id="12_52ybd"]
+[ext_resource type="Script" path="res://Scripts/double_jump_sound.gd" id="13_oqecy"]
+[ext_resource type="AudioStream" uid="uid://dliqlaigefatv" path="res://sound effects/movement/offical land.wav" id="14_g1hrt"]
+[ext_resource type="Script" path="res://Scripts/landing_sound.gd" id="15_6uhlh"]
+[ext_resource type="AudioStream" uid="uid://svq6iw6ygcwn" path="res://sound effects/begin_end/official scream to boom.wav" id="16_k8vxp"]
+[ext_resource type="Script" path="res://Scripts/falling_sound.gd" id="17_os3im"]
+[ext_resource type="Texture2D" uid="uid://bxy7nyr72vbhk" path="res://Assets/win_screen.png" id="18_m687j"]
 
 [sub_resource type="Curve2D" id="Curve2D_kxlxg"]
 _data = {
@@ -29,18 +29,21 @@ point_count = 2
 size = Vector2(304, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ao08"]
-atlas = ExtResource("5_a8wwt")
+atlas = ExtResource("6_dehnf")
 region = Rect2(755, 48, 170, 16)
 
-[node name="Floating World" type="Node2D"]
-script = ExtResource("1_dyskc")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4our8"]
+size = Vector2(1109, 61)
 
-[node name="Scrolling Background" parent="." instance=ExtResource("9_vtige")]
+[node name="Floating World" type="Node2D"]
+script = ExtResource("1_sl0r7")
+
+[node name="Scrolling Background" parent="." instance=ExtResource("2_uccer")]
 
 [node name="SpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_kxlxg")
-script = ExtResource("1_rdw0o")
-platform_scene = ExtResource("2_vbpbl")
+script = ExtResource("3_pd25u")
+platform_scene = ExtResource("4_p2185")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPath"]
 position = Vector2(64, 0)
@@ -48,7 +51,7 @@ position = Vector2(64, 0)
 [node name="Starting Platform" type="StaticBody2D" parent="."]
 position = Vector2(-80, -93)
 collision_layer = 257
-script = ExtResource("3_orjft")
+script = ExtResource("5_5q5hx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Starting Platform"]
 position = Vector2(576, 611)
@@ -64,13 +67,13 @@ texture = SubResource("AtlasTexture_2ao08")
 wait_time = 5.0
 one_shot = true
 
-[node name="Player" parent="." instance=ExtResource("4_vmq7h")]
+[node name="Player" parent="." instance=ExtResource("7_cdhof")]
 position = Vector2(496, 483)
 scale = Vector2(1.365, 1.365)
 platform_on_leave = 2
 
 [node name="Music Player" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_xiec0")
+stream = ExtResource("8_ukfjt")
 
 [node name="Platform Timer" type="Timer" parent="."]
 wait_time = 1.5
@@ -91,7 +94,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.188874, 0.0186291, 0, 1)
-theme_override_fonts/font = ExtResource("8_m5rvj")
+theme_override_fonts/font = ExtResource("9_g0ix6")
 theme_override_font_sizes/font_size = 111
 text = "Escape  core"
 
@@ -110,7 +113,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.877581, 0.238059, 0, 1)
-theme_override_fonts/font = ExtResource("8_m5rvj")
+theme_override_fonts/font = ExtResource("9_g0ix6")
 theme_override_font_sizes/font_size = 61
 text = "START"
 
@@ -129,44 +132,47 @@ grow_vertical = 2
 rotation = 0.1309
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.188874, 0.0186291, 0, 1)
-theme_override_fonts/font = ExtResource("8_m5rvj")
+theme_override_fonts/font = ExtResource("9_g0ix6")
 theme_override_font_sizes/font_size = 61
 text = "the"
 
 [node name="Sound Effects" type="Node" parent="."]
 
 [node name="Jump Sound" type="AudioStreamPlayer" parent="Sound Effects"]
-stream = ExtResource("10_spx0k")
+stream = ExtResource("10_u6u63")
 volume_db = 0.215
-script = ExtResource("11_060ly")
+script = ExtResource("11_577a3")
 
 [node name="Double Jump Sound" type="AudioStreamPlayer" parent="Sound Effects"]
-stream = ExtResource("12_dq62o")
+stream = ExtResource("12_52ybd")
 volume_db = 2.06
-script = ExtResource("12_xqkhc")
+script = ExtResource("13_oqecy")
 
-[node name="a" type="AudioStreamPlayer" parent="Sound Effects"]
-stream = ExtResource("20_v71cv")
+[node name="Landing Sound" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("14_g1hrt")
 volume_db = -6.118
-script = ExtResource("20_q150l")
+script = ExtResource("15_6uhlh")
 
 [node name="Falling Sound" type="AudioStreamPlayer" parent="Sound Effects"]
-stream = ExtResource("22_uqhb5")
-script = ExtResource("23_7c8vw")
+stream = ExtResource("16_k8vxp")
+script = ExtResource("17_os3im")
 
 [node name="Win Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Win Screen" type="TextureRect" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("24_htb5j")
+texture = ExtResource("18_m687j")
 
 [node name="Fade Screen" type="ColorRect" parent="."]
+visible = false
 offset_right = 1000.0
 offset_bottom = 568.0
 
 [node name="Win HUD" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="Win HUD"]
 anchors_preset = 5
@@ -177,7 +183,7 @@ offset_top = 33.0
 offset_right = 350.0
 offset_bottom = 140.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("8_m5rvj")
+theme_override_fonts/font = ExtResource("9_g0ix6")
 theme_override_font_sizes/font_size = 101
 text = "You Escaped!"
 
@@ -196,9 +202,15 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.877581, 0.238059, 0, 1)
-theme_override_fonts/font = ExtResource("8_m5rvj")
+theme_override_fonts/font = ExtResource("9_g0ix6")
 theme_override_font_sizes/font_size = 56
 text = "play again?"
+
+[node name="Final Platform" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Final Platform"]
+position = Vector2(498.5, 534.5)
+shape = SubResource("RectangleShape2D_4our8")
 
 [connection signal="game_end" from="." to="Scrolling Background" method="_on_floating_world_game_end"]
 [connection signal="game_end" from="." to="SpawnPath" method="_on_floating_world_game_end"]
@@ -210,10 +222,9 @@ text = "play again?"
 [connection signal="timeout" from="Starting Platform/Despawn Timer" to="Starting Platform" method="_on_despawn_timer_timeout"]
 [connection signal="player_fell_out_of_bounds" from="Player" to="." method="_on_player_player_fell_out_of_bounds"]
 [connection signal="player_fell_out_of_bounds" from="Player" to="Sound Effects/Falling Sound" method="_on_player_player_fell_out_of_bounds"]
-[connection signal="player_jumped" from="Player" to="Starting Platform" method="_on_player_player_jumped"]
 [connection signal="player_jumped" from="Player" to="Sound Effects/Jump Sound" method="_on_player_player_jumped"]
 [connection signal="player_jumped" from="Player" to="Sound Effects/Double Jump Sound" method="_on_player_player_jumped"]
-[connection signal="player_landed" from="Player" to="Sound Effects/a" method="_on_player_player_landed"]
+[connection signal="player_landed" from="Player" to="Sound Effects/Landing Sound" method="_on_player_player_landed"]
 [connection signal="timeout" from="Platform Timer" to="SpawnPath" method="_on_platform_timer_timeout"]
 [connection signal="pressed" from="HUD/Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="Win Timer" to="." method="_on_win_timer_timeout"]

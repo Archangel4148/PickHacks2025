@@ -1,0 +1,238 @@
+[gd_scene load_steps=22 format=3 uid="uid://bmo0qmvlhu4kf"]
+
+[ext_resource type="Script" path="res://Scripts/floating_world.gd" id="1_wm81b"]
+[ext_resource type="PackedScene" uid="uid://chsdp8s66n5s" path="res://scrolling_background.tscn" id="2_oujr7"]
+[ext_resource type="Script" path="res://Scripts/spawn_path.gd" id="3_dyryg"]
+[ext_resource type="PackedScene" uid="uid://dgynl46gj8bqx" path="res://infinite_moving_platform.tscn" id="4_y52u3"]
+[ext_resource type="Script" path="res://Scripts/starting_platform.gd" id="5_ihf6p"]
+[ext_resource type="Texture2D" uid="uid://dmj02wbepolnu" path="res://Assets/Cave Assets/mainlev_build.png" id="6_cc0v8"]
+[ext_resource type="PackedScene" uid="uid://c017ws7pisoip" path="res://player.tscn" id="7_uxmos"]
+[ext_resource type="AudioStream" uid="uid://cp2ggbjbgkwd2" path="res://Assets/Music/carmina.wav" id="8_y8bf7"]
+[ext_resource type="FontFile" uid="uid://cqs2hj0i8jw7b" path="res://Assets/Fonts/Mondobeyondobb-dn3E.otf" id="9_xv2a1"]
+[ext_resource type="AudioStream" uid="uid://86d1v7eiy7c0" path="res://sound effects/movement/slime_jump.wav" id="10_1ddmx"]
+[ext_resource type="Script" path="res://Scripts/jump_sound.gd" id="11_h65so"]
+[ext_resource type="AudioStream" uid="uid://cj381jttila37" path="res://sound effects/movement/double jump.wav" id="12_c5p5w"]
+[ext_resource type="Script" path="res://Scripts/double_jump_sound.gd" id="13_x0g0s"]
+[ext_resource type="AudioStream" uid="uid://dliqlaigefatv" path="res://sound effects/movement/offical land.wav" id="14_paqvw"]
+[ext_resource type="Script" path="res://Scripts/landing_sound.gd" id="15_tyym0"]
+[ext_resource type="AudioStream" uid="uid://svq6iw6ygcwn" path="res://sound effects/begin_end/official scream to boom.wav" id="16_if5ht"]
+[ext_resource type="Script" path="res://Scripts/falling_sound.gd" id="17_06y2o"]
+[ext_resource type="Texture2D" uid="uid://bxy7nyr72vbhk" path="res://Assets/win_screen.png" id="18_j7uuo"]
+
+[sub_resource type="Curve2D" id="Curve2D_kxlxg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 928, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5yche"]
+size = Vector2(304, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ao08"]
+atlas = ExtResource("6_cc0v8")
+region = Rect2(755, 48, 170, 16)
+
+[node name="Floating World" type="Node2D"]
+script = ExtResource("1_wm81b")
+
+[node name="Scrolling Background" parent="." instance=ExtResource("2_oujr7")]
+
+[node name="SpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_kxlxg")
+script = ExtResource("3_dyryg")
+platform_scene = ExtResource("4_y52u3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2(64, 0)
+
+[node name="Starting Platform" type="StaticBody2D" parent="."]
+position = Vector2(-80, -93)
+collision_layer = 257
+script = ExtResource("5_ihf6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Starting Platform"]
+position = Vector2(576, 611)
+shape = SubResource("RectangleShape2D_5yche")
+
+[node name="Sprite2D" type="Sprite2D" parent="Starting Platform"]
+texture_filter = 1
+position = Vector2(576, 608)
+scale = Vector2(1.865, 1.865)
+texture = SubResource("AtlasTexture_2ao08")
+
+[node name="Despawn Timer" type="Timer" parent="Starting Platform"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Player" parent="." instance=ExtResource("7_uxmos")]
+position = Vector2(496, 483)
+scale = Vector2(1.365, 1.365)
+platform_on_leave = 2
+
+[node name="Music Player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_y8bf7")
+
+[node name="Platform Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -414.5
+offset_top = -132.0
+offset_right = 414.5
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.188874, 0.0186291, 0, 1)
+theme_override_fonts/font = ExtResource("9_xv2a1")
+theme_override_font_sizes/font_size = 111
+text = "Escape  core"
+
+[node name="Start Button" type="Button" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = 29.5
+offset_right = 99.0
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.877581, 0.238059, 0, 1)
+theme_override_fonts/font = ExtResource("9_xv2a1")
+theme_override_font_sizes/font_size = 61
+text = "START"
+
+[node name="Label2" type="Label" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -113.5
+offset_right = 817.0
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.1309
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.188874, 0.0186291, 0, 1)
+theme_override_fonts/font = ExtResource("9_xv2a1")
+theme_override_font_sizes/font_size = 61
+text = "the"
+
+[node name="Label3" type="Label" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.5
+offset_top = -194.0
+offset_right = 644.5
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.314549, 0.370217, 1, 1)
+theme_override_fonts/font = ExtResource("9_xv2a1")
+theme_override_font_sizes/font_size = 66
+text = "DEV MODE"
+
+[node name="Sound Effects" type="Node" parent="."]
+
+[node name="Jump Sound" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("10_1ddmx")
+volume_db = 0.215
+script = ExtResource("11_h65so")
+
+[node name="Double Jump Sound" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("12_c5p5w")
+volume_db = 2.06
+script = ExtResource("13_x0g0s")
+
+[node name="a" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("14_paqvw")
+volume_db = -6.118
+script = ExtResource("15_tyym0")
+
+[node name="Falling Sound" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("16_if5ht")
+script = ExtResource("17_06y2o")
+
+[node name="Win Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Win Screen" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("18_j7uuo")
+
+[node name="Fade Screen" type="ColorRect" parent="."]
+offset_right = 1000.0
+offset_bottom = 568.0
+
+[node name="Win HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="Win HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 33.0
+offset_right = 350.0
+offset_bottom = 140.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("9_xv2a1")
+theme_override_font_sizes/font_size = 101
+text = "You Escaped!"
+
+[node name="Replay Button" type="Button" parent="Win HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 140.0
+offset_top = 142.5
+offset_right = 474.0
+offset_bottom = 215.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.877581, 0.238059, 0, 1)
+theme_override_fonts/font = ExtResource("9_xv2a1")
+theme_override_font_sizes/font_size = 56
+text = "play again?"
+
+[connection signal="game_end" from="." to="Scrolling Background" method="_on_floating_world_game_end"]
+[connection signal="game_end" from="." to="SpawnPath" method="_on_floating_world_game_end"]
+[connection signal="game_end" from="." to="Starting Platform" method="_on_floating_world_game_end"]
+[connection signal="game_end" from="." to="Player" method="_on_floating_world_game_end"]
+[connection signal="game_started" from="." to="Scrolling Background" method="_on_floating_world_game_started"]
+[connection signal="game_started" from="." to="Starting Platform" method="_on_floating_world_game_started"]
+[connection signal="game_started" from="." to="Player" method="_on_floating_world_game_started"]
+[connection signal="timeout" from="Starting Platform/Despawn Timer" to="Starting Platform" method="_on_despawn_timer_timeout"]
+[connection signal="player_fell_out_of_bounds" from="Player" to="." method="_on_player_player_fell_out_of_bounds"]
+[connection signal="player_fell_out_of_bounds" from="Player" to="Sound Effects/Falling Sound" method="_on_player_player_fell_out_of_bounds"]
+[connection signal="player_jumped" from="Player" to="Starting Platform" method="_on_player_player_jumped"]
+[connection signal="player_jumped" from="Player" to="Sound Effects/Jump Sound" method="_on_player_player_jumped"]
+[connection signal="player_jumped" from="Player" to="Sound Effects/Double Jump Sound" method="_on_player_player_jumped"]
+[connection signal="player_landed" from="Player" to="Sound Effects/a" method="_on_player_player_landed"]
+[connection signal="timeout" from="Platform Timer" to="SpawnPath" method="_on_platform_timer_timeout"]
+[connection signal="pressed" from="HUD/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="Win Timer" to="." method="_on_win_timer_timeout"]
+[connection signal="pressed" from="Win HUD/Replay Button" to="." method="_on_replay_button_pressed"]

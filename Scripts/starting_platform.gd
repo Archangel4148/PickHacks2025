@@ -7,12 +7,18 @@ var game_started = false
 
 var game_over = false
 
+func _process(delta: float) -> void:
+	if visible:
+		set_collision_layer_value(1, true)
+	else:
+		set_collision_layer_value(1, false)
+		print("NO COLLISION", randf())
+
+
 # Called when the game starts
 func _on_floating_world_game_started(disable_inputs: bool) -> void:
 	if disable_inputs:
-		print("STARTING DISABLED")
 		game_started = false
-		set_collision_layer_value(1, true)
 		show()
 		sprite.modulate = Color(1, 1, 1, 1)  # Reset transparency
 	else:
@@ -34,10 +40,7 @@ func _on_despawn_timer_timeout() -> void:
 	var fade_tween = get_tree().create_tween()
 	fade_tween.tween_property(sprite, "modulate:a", 0, 0.5)  # Fade out before hiding
 	await fade_tween.finished
-	if !game_over:
-		hide()
-		set_collision_layer_value(1, false)
-
+	hide()
 
 func _on_floating_world_game_end(is_win: bool) -> void:
 	game_over = true

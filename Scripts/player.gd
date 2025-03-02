@@ -15,7 +15,7 @@ signal player_jumped(is_double_jump: bool)
 signal player_landed  # Signal for landing detection
 signal player_fell_out_of_bounds  # New signal for falling below the screen
 
-@export var fall_threshold: float = 50  # How far below the screen before triggering the signal
+@export var fall_threshold: float = 200  # How far below the screen before triggering the signal
 
 # Store the spawn position
 var spawn_position: Vector2
@@ -60,6 +60,7 @@ func _physics_process(delta: float) -> void:
 	# Handle falling out of bounds
 	var screen_bottom = get_viewport_rect().end.y  # Bottom of the viewport
 	if position.y > screen_bottom + fall_threshold and !has_fallen:
+		print("FALLING OUT OF THE WORLD")
 		has_fallen = true
 		player_fell_out_of_bounds.emit()
 

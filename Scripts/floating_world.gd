@@ -3,16 +3,20 @@ extends Node2D
 signal game_started(disable_inputs: bool)
 signal game_end(is_win: bool)
 
+var is_fullscreen = true
+
 var game_length
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$"Win Screen".hide()
 	$"Win HUD".hide()
+	$"Final Platform".set_collision_layer_value(1, false)
 	game_started.emit(true)
 	$HUD.show()
-	#game_length = $"Music Player".stream.get_length()
-	game_length = 6
+	game_length = $"Music Player".stream.get_length()
+	
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
 	# Initialize the ColorRect for the fade effect
 	$"Fade Screen".color = Color(1, 1, 1, 0)
@@ -21,8 +25,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+		if Input.is_action_just_pressed("fullscreen"):
+			if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			else:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 func _on_chord_timer_chord_timer_start() -> void:
 	$"Music Player".play()
@@ -36,6 +43,8 @@ func start_game():
 	$HUD.hide()
 	$"Win HUD".hide()
 	$"Win Screen".hide()
+	$"Final Platform".set_collision_layer_value(1, false)
+
 	$"Platform Timer".start()
 	# Set win timer
 	$"Win Timer".wait_time = game_length
@@ -61,6 +70,7 @@ func game_over(is_win: bool):
 		game_end.emit(true)
 		fade_to_white()
 	else:
+		print("GAME OVER (LOSS)")
 		game_end.emit(false)
 		await get_tree().create_timer(3.5).timeout
 		$HUD.show()
@@ -73,7 +83,8 @@ func fade_to_white():
 	await get_tree().create_timer(1.0).timeout
 	# Set up and display the win screen (with the player)
 	$"Win Screen".show()
-	$"Starting Platform/CollisionShape2D".scale = Vector2($"Starting Platform/CollisionShape2D".scale.x * 5, $"Starting Platform/CollisionShape2D".scale.y)
+	$"Final Platform".set_collision_layer_value(1, true)
+	#$"Starting Platform/CollisionShape2D".scale = Vector2($"Starting Platform/CollisionShape2D".scale.x * 5, $"Starting Platform/CollisionShape2D".scale.y)
 	$Player.z_index = 10
 	$Player.position = Vector2(200, 128)
 	$Player.scale = Vector2(3,3)
@@ -100,6 +111,7 @@ func _on_replay_button_pressed() -> void:
 
 	# Reset platform size if modified
 	$"Starting Platform/CollisionShape2D".scale = Vector2(1, 1)
+	$"Starting Platform".set_collision_layer_value(1, true)
 	$"Starting Platform".show()
 	$"Starting Platform/Sprite2D".modulate = Color(1, 1, 1, 1)
 
