@@ -76,7 +76,6 @@ stream = ExtResource("8_7nwcf")
 wait_time = 1.5
 
 [node name="HUD" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Label" type="Label" parent="HUD"]
 anchors_preset = 8
@@ -164,7 +163,6 @@ offset_bottom = 40.0
 texture = ExtResource("24_htb5j")
 
 [node name="Fade Screen" type="ColorRect" parent="."]
-visible = false
 offset_right = 1000.0
 offset_bottom = 568.0
 
