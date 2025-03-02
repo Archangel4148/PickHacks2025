@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xopxxosolaif"
+path="res://.godot/imported/boom.mp3-b4c079c2d2254fc6d583744aa616e2d5.mp3str"
+
+[deps]
+
+source_file="res://sound effects/begin_end/boom.mp3"
+dest_files=["res://.godot/imported/boom.mp3-b4c079c2d2254fc6d583744aa616e2d5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

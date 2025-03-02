@@ -6,13 +6,13 @@
 [ext_resource type="Script" path="res://Scripts/starting_platform.gd" id="3_orjft"]
 [ext_resource type="PackedScene" uid="uid://c017ws7pisoip" path="res://player.tscn" id="4_vmq7h"]
 [ext_resource type="Texture2D" uid="uid://dmj02wbepolnu" path="res://Assets/Cave Assets/mainlev_build.png" id="5_a8wwt"]
-[ext_resource type="AudioStream" uid="uid://b7eifp2nkba3u" path="res://Assets/Music/Gioachino_Rossini_-_The_Barber_Of_Seville_-_Overture.ogg" id="8_b3j57"]
+[ext_resource type="AudioStream" uid="uid://bwsdrrnm3p6n2" path="res://Assets/Music/background_music.wav" id="8_7nwcf"]
 [ext_resource type="FontFile" uid="uid://cqs2hj0i8jw7b" path="res://Assets/Fonts/Mondobeyondobb-dn3E.otf" id="8_m5rvj"]
 [ext_resource type="PackedScene" uid="uid://chsdp8s66n5s" path="res://scrolling_background.tscn" id="9_vtige"]
 [ext_resource type="AudioStream" uid="uid://bxefo0ow1sp0s" path="res://sound effects/grunts/grunt1.wav" id="10_5mfag"]
-[ext_resource type="Script" path="res://jump_sound.gd" id="11_060ly"]
+[ext_resource type="Script" path="res://Scripts/jump_sound.gd" id="11_060ly"]
 [ext_resource type="AudioStream" uid="uid://cj381jttila37" path="res://sound effects/movement/double jump.wav" id="12_dq62o"]
-[ext_resource type="Script" path="res://double_jump_sound.gd" id="12_xqkhc"]
+[ext_resource type="Script" path="res://Scripts/double_jump_sound.gd" id="12_xqkhc"]
 
 [sub_resource type="Curve2D" id="Curve2D_kxlxg"]
 _data = {
@@ -61,7 +61,7 @@ scale = Vector2(0.525, 0.525)
 platform_on_leave = 2
 
 [node name="Music Player" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_b3j57")
+stream = ExtResource("8_7nwcf")
 
 [node name="Platform Timer" type="Timer" parent="."]
 wait_time = 1.5

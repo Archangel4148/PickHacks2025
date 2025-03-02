@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_player_player_jumped() -> void:
+func _on_player_player_jumped(is_double_jump: bool) -> void:
 	if not game_started:
 		return
 	hide()

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bbr4ppdhobbpr"
+path="res://.godot/imported/Level Complete.wav-4f7d3c1119a70062ce13a361a23c0561.sample"
+
+[deps]
+
+source_file="res://sound effects/begin_end/Level Complete.wav"
+dest_files=["res://.godot/imported/Level Complete.wav-4f7d3c1119a70062ce13a361a23c0561.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

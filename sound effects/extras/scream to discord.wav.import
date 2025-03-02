@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bassk55ldvvm1"
+path="res://.godot/imported/scream to discord.wav-e68e6fa3e9d364fdb6999c760c81b1e9.sample"
+
+[deps]
+
+source_file="res://sound effects/extras/scream to discord.wav"
+dest_files=["res://.godot/imported/scream to discord.wav-e68e6fa3e9d364fdb6999c760c81b1e9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

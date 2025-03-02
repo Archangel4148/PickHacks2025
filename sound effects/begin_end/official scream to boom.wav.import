@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://svq6iw6ygcwn"
+path="res://.godot/imported/official scream to boom.wav-c9a648cc3f705b80ab6660176d38160f.sample"
+
+[deps]
+
+source_file="res://sound effects/begin_end/official scream to boom.wav"
+dest_files=["res://.godot/imported/official scream to boom.wav-c9a648cc3f705b80ab6660176d38160f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

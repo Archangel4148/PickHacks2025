@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dliqlaigefatv"
+path="res://.godot/imported/offical land.wav-ce17446cd46f0d6adc20fd83376a1669.sample"
+
+[deps]
+
+source_file="res://sound effects/movement/offical land.wav"
+dest_files=["res://.godot/imported/offical land.wav-ce17446cd46f0d6adc20fd83376a1669.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

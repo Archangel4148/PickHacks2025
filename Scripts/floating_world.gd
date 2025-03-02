@@ -23,6 +23,9 @@ func _on_start_button_pressed() -> void:
 func start_game():
 	$HUD.hide()
 	$"Platform Timer".start()
-	$"Scrolling Background".scroll_time = 180
+	if $"Music Player".stream:  # Ensure a valid audio stream exists
+		$"Scrolling Background".scroll_time = $"Music Player".stream.get_length()
+	else:
+		$"Scrolling Background".scroll_time = 180
 	$"Music Player".play()
 	game_started.emit(false)

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4r7o8bqixfxp"
+path="res://.godot/imported/growl.wav-bb364d9b245ad599e8ce45b19bea773f.sample"
+
+[deps]
+
+source_file="res://sound effects/grunts/growl.wav"
+dest_files=["res://.godot/imported/growl.wav-bb364d9b245ad599e8ce45b19bea773f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
