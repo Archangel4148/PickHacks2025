@@ -50,6 +50,9 @@ func _physics_process(delta: float) -> void:
 			player_landed.emit()
 
 	was_in_air = !on_floor  # Update air state
+	
+	if game_is_over:
+		return
 
 	# Handle falling out of bounds
 	var screen_bottom = get_viewport_rect().end.y  # Bottom of the viewport
