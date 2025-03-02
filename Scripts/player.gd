@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 var jump_count = 0  # Number of jumps that have been made
 var disable_input = true
+var game_is_over = false
 var was_in_air = false  # Tracks if the player was airborne
 var has_fallen = false
 
@@ -18,10 +19,12 @@ signal player_fell_out_of_bounds  # New signal for falling below the screen
 
 # Store the spawn position
 var spawn_position: Vector2
+var original_scale: Vector2
 
 func _ready():
 	# Save the player's initial position as the spawn position when the game starts
 	spawn_position = position
+	original_scale = scale
 	reset_player()  # Ensure the player starts in the initial position
 
 func _physics_process(delta: float) -> void:
@@ -98,8 +101,9 @@ func _on_floating_world_game_started(disable_inputs: bool) -> void:
 
 # Reset the player's state, position, and jump count
 func reset_player():
-	# Reset position to spawn position
+	# Reset position and scale
 	position = spawn_position
+	scale = original_scale
 	
 	# Reset other state variables
 	jump_count = 0
@@ -109,3 +113,9 @@ func reset_player():
 
 	# Optionally reset animations
 	$AnimatedSprite2D.play("Idle")  # Play idle animation when reset
+
+
+func _on_floating_world_game_end(is_win: bool) -> void:
+	if is_win:
+		game_is_over = true
+		disable_input = true
