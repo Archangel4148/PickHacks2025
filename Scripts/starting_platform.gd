@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+var game_started = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,5 +13,15 @@ func _process(delta: float) -> void:
 
 
 func _on_player_player_jumped() -> void:
+	if not game_started:
+		return
 	hide()
-	collision_layer
+	set_collision_layer_value(1, false)
+
+func _on_floating_world_game_started(disable_inputs: bool) -> void:
+	if disable_inputs:
+		game_started = false
+		set_collision_layer_value(1, true)
+		show()
+	else:
+		game_started = true

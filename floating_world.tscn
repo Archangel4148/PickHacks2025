@@ -57,18 +57,47 @@ stream = ExtResource("8_b3j57")
 
 [node name="Platform Timer" type="Timer" parent="."]
 wait_time = 1.5
-autostart = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="HUD"]
-offset_left = 179.0
-offset_top = 237.0
-offset_right = 1008.0
-offset_bottom = 355.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -414.5
+offset_top = -147.0
+offset_right = 414.5
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("8_m5rvj")
 theme_override_font_sizes/font_size = 111
 text = "You're Mother"
 
+[node name="Start Button" type="Button" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = 84.0
+offset_right = 99.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0, 0.984314, 0, 1)
+theme_override_fonts/font = ExtResource("8_m5rvj")
+theme_override_font_sizes/font_size = 61
+text = "START"
+
+[connection signal="game_started" from="." to="Starting Platform" method="_on_floating_world_game_started"]
+[connection signal="game_started" from="." to="Player" method="_on_floating_world_game_started"]
 [connection signal="player_jumped" from="Player" to="Starting Platform" method="_on_player_player_jumped"]
 [connection signal="timeout" from="Platform Timer" to="SpawnPath" method="_on_platform_timer_timeout"]
+[connection signal="pressed" from="HUD/Start Button" to="." method="_on_start_button_pressed"]
