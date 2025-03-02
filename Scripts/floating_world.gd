@@ -1,6 +1,7 @@
 extends Node2D
 
 signal game_started(disable_inputs: bool)
+signal game_end(is_win: bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,3 +30,16 @@ func start_game():
 		$"Scrolling Background".scroll_time = 180
 	$"Music Player".play()
 	game_started.emit(false)
+
+func game_over():
+	# Stop spawning platforms
+	$"Platform Timer".stop()
+	
+	# Reset the music player
+	if $"Music Player".stream:  # Ensure a valid audio stream exists
+		$"Music Player".seek(0)  # Reset music to the start
+	
+	game_end.emit(false)
+
+func _on_player_player_fell_out_of_bounds() -> void:
+	game_over()

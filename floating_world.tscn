@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://7le66cg706ka"]
+[gd_scene load_steps=27 format=3 uid="uid://7le66cg706ka"]
 
 [ext_resource type="Script" path="res://Scripts/floating_world.gd" id="1_dyskc"]
 [ext_resource type="Script" path="res://Scripts/spawn_path.gd" id="1_rdw0o"]
@@ -21,6 +21,8 @@
 [ext_resource type="AudioStream" uid="uid://v8ysl5y1gnmc" path="res://sound effects/grunts/grunt7.wav" id="17_46ota"]
 [ext_resource type="Script" path="res://Scripts/landing_sound.gd" id="20_q150l"]
 [ext_resource type="AudioStream" uid="uid://dliqlaigefatv" path="res://sound effects/movement/offical land.wav" id="20_v71cv"]
+[ext_resource type="AudioStream" uid="uid://svq6iw6ygcwn" path="res://sound effects/begin_end/official scream to boom.wav" id="22_uqhb5"]
+[ext_resource type="Script" path="res://Scripts/falling_sound.gd" id="23_7c8vw"]
 
 [sub_resource type="Curve2D" id="Curve2D_kxlxg"]
 _data = {
@@ -128,9 +130,16 @@ script = ExtResource("12_xqkhc")
 stream = ExtResource("20_v71cv")
 script = ExtResource("20_q150l")
 
+[node name="Falling Sound" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("22_uqhb5")
+script = ExtResource("23_7c8vw")
+
+[connection signal="game_end" from="." to="Scrolling Background" method="_on_floating_world_game_end"]
 [connection signal="game_started" from="." to="Scrolling Background" method="_on_floating_world_game_started"]
 [connection signal="game_started" from="." to="Starting Platform" method="_on_floating_world_game_started"]
 [connection signal="game_started" from="." to="Player" method="_on_floating_world_game_started"]
+[connection signal="player_fell_out_of_bounds" from="Player" to="." method="_on_player_player_fell_out_of_bounds"]
+[connection signal="player_fell_out_of_bounds" from="Player" to="Sound Effects/Falling Sound" method="_on_player_player_fell_out_of_bounds"]
 [connection signal="player_jumped" from="Player" to="Starting Platform" method="_on_player_player_jumped"]
 [connection signal="player_jumped" from="Player" to="Sound Effects/Jump Sound" method="_on_player_player_jumped"]
 [connection signal="player_jumped" from="Player" to="Sound Effects/Double Jump Sound" method="_on_player_player_jumped"]

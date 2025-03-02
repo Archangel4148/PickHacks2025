@@ -8,9 +8,13 @@ extends CharacterBody2D
 var jump_count = 0  # Number of jumps that have been made
 var disable_input = true
 var was_in_air = false  # Tracks if the player was airborne
+var has_fallen = false
 
 signal player_jumped(is_double_jump: bool)
-signal player_landed  # New signal for landing detection
+signal player_landed  # Signal for landing detection
+signal player_fell_out_of_bounds  # New signal for falling below the screen
+
+@export var fall_threshold: float = 50  # How far below the screen before triggering the signal
 
 func _physics_process(delta: float) -> void:
 	var on_floor = is_on_floor()
@@ -19,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		# Expend a jump if walking off a platform
 		if jump_count == 0:
 			jump_count = 1
-		
+
 		# Apply gravity
 		velocity.y += gravity
 
@@ -35,6 +39,12 @@ func _physics_process(delta: float) -> void:
 			player_landed.emit()
 
 	was_in_air = !on_floor  # Update air state
+
+	# Handle falling out of bounds
+	var screen_bottom = get_viewport_rect().end.y  # Bottom of the viewport
+	if position.y > screen_bottom + fall_threshold and !has_fallen:
+		has_fallen = true
+		player_fell_out_of_bounds.emit()
 
 	if !disable_input:
 		# Handle movement
@@ -54,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("Idle")
 
 	move_and_slide()
-	
+
 func _input(event: InputEvent) -> void:
 	if disable_input:
 		return
