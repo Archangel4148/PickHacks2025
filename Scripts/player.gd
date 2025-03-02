@@ -53,6 +53,8 @@ func _physics_process(delta: float) -> void:
 	
 	if game_is_over:
 		move_and_slide()
+		if position.y > 500:
+			position.y = 500
 		return
 
 	# Handle falling out of bounds
@@ -121,5 +123,7 @@ func reset_player():
 
 func _on_floating_world_game_end(is_win: bool) -> void:
 	if is_win:
+		velocity.x = 0
 		game_is_over = true
 		disable_input = true
+		

@@ -12,7 +12,7 @@ func _ready() -> void:
 	game_started.emit(true)
 	$HUD.show()
 	#game_length = $"Music Player".stream.get_length()
-	game_length = 3
+	game_length = 6
 	
 	# Initialize the ColorRect for the fade effect
 	$"Fade Screen".color = Color(1, 1, 1, 0)
@@ -100,6 +100,8 @@ func _on_replay_button_pressed() -> void:
 
 	# Reset platform size if modified
 	$"Starting Platform/CollisionShape2D".scale = Vector2(1, 1)
+	$"Starting Platform".show()
+	$"Starting Platform/Sprite2D".modulate = Color(1, 1, 1, 1)
 
 	# Reset background scrolling
 	$"Scrolling Background".reset_scroll()
@@ -109,3 +111,4 @@ func _on_replay_button_pressed() -> void:
 
 	$Player.reset_player()
 	$HUD.show()
+	$Player.game_is_over = false
