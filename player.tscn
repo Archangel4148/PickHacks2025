@@ -1,9 +1,9 @@
 [gd_scene load_steps=35 format=3 uid="uid://c017ws7pisoip"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_2dfpc"]
-[ext_resource type="Texture2D" uid="uid://c4bhrq06nlrmi" path="res://Assets/Red_Slime/Idle.png" id="2_hu458"]
-[ext_resource type="Texture2D" uid="uid://cawdnlqp2atn0" path="res://Assets/Red_Slime/Jump.png" id="3_b2jwa"]
-[ext_resource type="Texture2D" uid="uid://dhdyr5r3wgtua" path="res://Assets/Red_Slime/Run.png" id="4_d0k7h"]
+[ext_resource type="Texture2D" uid="uid://bu3bhltxfvb8" path="res://Assets/Red_Slime/Idle.png" id="2_hu458"]
+[ext_resource type="Texture2D" uid="uid://cn6n1qsybl3e" path="res://Assets/Red_Slime/Jump.png" id="3_b2jwa"]
+[ext_resource type="Texture2D" uid="uid://ns6ouv3yb3ht" path="res://Assets/Red_Slime/Run.png" id="4_d0k7h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jgb8"]
 size = Vector2(51, 33)
@@ -231,8 +231,8 @@ position = Vector2(-1.5, -16.5)
 shape = SubResource("RectangleShape2D_4jgb8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(-3, -64)
 sprite_frames = SubResource("SpriteFrames_8poi5")
 animation = &"Jump"
 frame = 12
-frame_progress = 1.0
+frame_progress = 0.208155
