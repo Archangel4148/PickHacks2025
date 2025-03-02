@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://7le66cg706ka"]
+[gd_scene load_steps=25 format=3 uid="uid://7le66cg706ka"]
 
 [ext_resource type="Script" path="res://Scripts/floating_world.gd" id="1_dyskc"]
 [ext_resource type="Script" path="res://Scripts/spawn_path.gd" id="1_rdw0o"]
@@ -19,6 +19,8 @@
 [ext_resource type="AudioStream" uid="uid://dnydbjnudb0ha" path="res://sound effects/grunts/grunt5.wav" id="15_1klfp"]
 [ext_resource type="AudioStream" uid="uid://blwg5w72w7io0" path="res://sound effects/grunts/grunt6.wav" id="16_whcen"]
 [ext_resource type="AudioStream" uid="uid://v8ysl5y1gnmc" path="res://sound effects/grunts/grunt7.wav" id="17_46ota"]
+[ext_resource type="Script" path="res://Scripts/landing_sound.gd" id="20_q150l"]
+[ext_resource type="AudioStream" uid="uid://dliqlaigefatv" path="res://sound effects/movement/offical land.wav" id="20_v71cv"]
 
 [sub_resource type="Curve2D" id="Curve2D_kxlxg"]
 _data = {
@@ -119,7 +121,12 @@ jump_sounds = Array[AudioStream]([ExtResource("10_5mfag"), ExtResource("12_7vjfv
 
 [node name="Double Jump Sound" type="AudioStreamPlayer" parent="Sound Effects"]
 stream = ExtResource("12_dq62o")
+volume_db = 2.06
 script = ExtResource("12_xqkhc")
+
+[node name="Landing Sound" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("20_v71cv")
+script = ExtResource("20_q150l")
 
 [connection signal="game_started" from="." to="Scrolling Background" method="_on_floating_world_game_started"]
 [connection signal="game_started" from="." to="Starting Platform" method="_on_floating_world_game_started"]
@@ -127,5 +134,6 @@ script = ExtResource("12_xqkhc")
 [connection signal="player_jumped" from="Player" to="Starting Platform" method="_on_player_player_jumped"]
 [connection signal="player_jumped" from="Player" to="Sound Effects/Jump Sound" method="_on_player_player_jumped"]
 [connection signal="player_jumped" from="Player" to="Sound Effects/Double Jump Sound" method="_on_player_player_jumped"]
+[connection signal="player_landed" from="Player" to="Sound Effects/Landing Sound" method="_on_player_player_landed"]
 [connection signal="timeout" from="Platform Timer" to="SpawnPath" method="_on_platform_timer_timeout"]
 [connection signal="pressed" from="HUD/Start Button" to="." method="_on_start_button_pressed"]

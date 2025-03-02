@@ -7,38 +7,41 @@ extends CharacterBody2D
 
 var jump_count = 0  # Number of jumps that have been made
 var disable_input = true
+var was_in_air = false  # Tracks if the player was airborne
 
 signal player_jumped(is_double_jump: bool)
-
-func _ready():
-	pass
-	
-func _process(delta: float) -> void:
-	pass
+signal player_landed  # New signal for landing detection
 
 func _physics_process(delta: float) -> void:
-		
-	if !is_on_floor():
-		# Expend a jump for walking off of platform edges
+	var on_floor = is_on_floor()
+
+	if !on_floor:
+		# Expend a jump if walking off a platform
 		if jump_count == 0:
 			jump_count = 1
 		
 		# Apply gravity
 		velocity.y += gravity
-	
-		# Velocity cap
-		if velocity.y > 1000:
-			velocity.y = 1000
+
+		# Cap falling speed
+		velocity.y = min(velocity.y, 1000)
+
 	else:
-		# Reset jump count on land
+		# Reset jump count when landing
 		jump_count = 0
-	
+
+		# Emit landing signal if the player was in the air
+		if was_in_air:
+			player_landed.emit()
+
+	was_in_air = !on_floor  # Update air state
+
 	if !disable_input:
-		# Handle directional movement
+		# Handle movement
 		var horiz_direction = Input.get_axis("move_left", "move_right")
 		velocity.x = move_speed * horiz_direction
-		if is_on_floor():
-			#$AnimatedSprite2D.stop()
+
+		if on_floor:
 			if horiz_direction == 1:
 				$AnimatedSprite2D.flip_h = false
 				$AnimatedSprite2D.play("Run")
@@ -47,10 +50,8 @@ func _physics_process(delta: float) -> void:
 				$AnimatedSprite2D.play("Run")
 			else:
 				$AnimatedSprite2D.play("Idle")
-		
-
-		
-
+	else:
+		$AnimatedSprite2D.play("Idle")
 
 	move_and_slide()
 	
@@ -65,14 +66,12 @@ func _input(event: InputEvent) -> void:
 		$AnimatedSprite2D.stop()
 		$AnimatedSprite2D.play("Jump")
 		player_jumped.emit(!is_on_floor())
-		
+
 	# Handle crouching (dropping through platforms)
 	if event.is_action_pressed("crouch"):
 		set_collision_mask_value(10, false)
 	else:
 		set_collision_mask_value(10, true)
-	
-
 
 func _on_floating_world_game_started(disable_inputs: bool) -> void:
 	disable_input = disable_inputs
