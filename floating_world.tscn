@@ -94,7 +94,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.188874, 0.0186291, 0, 1)
 theme_override_fonts/font = ExtResource("8_m5rvj")
 theme_override_font_sizes/font_size = 111
-text = "You're Mother"
+text = "Escape  core"
 
 [node name="Start Button" type="Button" parent="HUD"]
 anchors_preset = 8
@@ -114,6 +114,25 @@ theme_override_colors/font_hover_color = Color(0.877581, 0.238059, 0, 1)
 theme_override_fonts/font = ExtResource("8_m5rvj")
 theme_override_font_sizes/font_size = 61
 text = "START"
+
+[node name="Label2" type="Label" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -113.5
+offset_right = 817.0
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.1309
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.188874, 0.0186291, 0, 1)
+theme_override_fonts/font = ExtResource("8_m5rvj")
+theme_override_font_sizes/font_size = 61
+text = "the"
 
 [node name="Sound Effects" type="Node" parent="."]
 
@@ -135,6 +154,7 @@ stream = ExtResource("22_uqhb5")
 script = ExtResource("23_7c8vw")
 
 [connection signal="game_end" from="." to="Scrolling Background" method="_on_floating_world_game_end"]
+[connection signal="game_end" from="." to="SpawnPath" method="_on_floating_world_game_end"]
 [connection signal="game_started" from="." to="Scrolling Background" method="_on_floating_world_game_started"]
 [connection signal="game_started" from="." to="Starting Platform" method="_on_floating_world_game_started"]
 [connection signal="game_started" from="." to="Player" method="_on_floating_world_game_started"]

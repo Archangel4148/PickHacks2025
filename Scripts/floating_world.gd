@@ -36,6 +36,7 @@ func game_over():
 	$"Platform Timer".stop()
 	
 	# Reset the music player
+	$"Music Player".stop()
 	if $"Music Player".stream:  # Ensure a valid audio stream exists
 		$"Music Player".seek(0)  # Reset music to the start
 	
