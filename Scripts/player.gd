@@ -37,6 +37,19 @@ func _physics_process(delta: float) -> void:
 		# Handle directional movement
 		var horiz_direction = Input.get_axis("move_left", "move_right")
 		velocity.x = move_speed * horiz_direction
+		if is_on_floor():
+			#$AnimatedSprite2D.stop()
+			if horiz_direction == 1:
+				$AnimatedSprite2D.flip_h = false
+				$AnimatedSprite2D.play("Run")
+			elif horiz_direction == -1:
+				$AnimatedSprite2D.flip_h = true
+				$AnimatedSprite2D.play("Run")
+			else:
+				$AnimatedSprite2D.play("Idle")
+		
+
+		
 
 
 	move_and_slide()
@@ -49,7 +62,8 @@ func _input(event: InputEvent) -> void:
 	if jump_count < max_jumps and event.is_action_pressed("jump"):
 		velocity.y = -jump_force
 		jump_count += 1
-		
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("Jump")
 		player_jumped.emit(!is_on_floor())
 		
 	# Handle crouching (dropping through platforms)
